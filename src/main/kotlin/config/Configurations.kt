@@ -1,7 +1,7 @@
 package config
 
-import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
+import models.TestUser
 import utils.ErrorHandler
 import java.io.File
 
@@ -39,11 +39,22 @@ object Configurations {
     }
 
     /**
-     * Получение юзеров
+     * Получение юзера из конфигураций по роли
      */
-    fun getUserByRole(role: String): Config {
+    fun getUserByRole(role: String): TestUser {
         return config.getConfigList("Users")
             .firstOrNull { it.getString("role") == role }
+            .let { userConfig ->
+                userConfig?.let {
+                    TestUser(
+                        login = it.getString("login"),
+                        password = userConfig.getString("password"),
+                        isValid = userConfig.getBoolean("isValid"),
+                        role = userConfig.getString("role"),
+                        description = userConfig.getString("description")
+                    )
+                }
+            }
             ?: throw ErrorHandler.handle(Exception(), "В списке юзеров отсутствует юзер с ролью = $role")
 
     }
