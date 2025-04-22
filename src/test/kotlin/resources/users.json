@@ -1,0 +1,80 @@
+[
+  {
+    "login": "user1",
+    "password": "ValidPassword1!",
+    "isValid": true,
+    "description": "Содержит: цифру, заглавные/строчные буквы, спецсимвол '!', длина 14"
+  },
+  {
+    "login": "user2",
+    "password": "Abc123$%",
+    "isValid": true,
+    "description": "Граничная длина 8, есть цифры, оба регистра, спецсимволы '$%'"
+  },
+  {
+    "login": "user3",
+    "password": "P@ssw0rd",
+    "isValid": true,
+    "description": "Классический пример с '@', длина 8"
+  },
+  {
+    "login": "user4",
+    "password": "1Qazxsw2#",
+    "isValid": true,
+    "description": "Цифры в начале/конце, спецсимвол '#', длина 9"
+  },
+  {
+    "login": "user5",
+    "password": "Password#",
+    "isValid": false,
+    "description": "Нет цифры"
+  },
+  {
+    "login": "user6",
+    "password": "p@ssw0rd",
+    "isValid": false,
+    "description": "Нет заглавных букв"
+  },
+  {
+    "login": "user7",
+    "password": "P@SSW0RD",
+    "isValid": false,
+    "description": "Нет строчных букв"
+  },
+  {
+    "login": "user8",
+    "password": "Password1",
+    "isValid": false,
+    "description": "Нет спецсимволов"
+  },
+  {
+    "login": "user9",
+    "password": "Pa1!",
+    "isValid": false,
+    "description": "Короткий пароль (4 символа)"
+  },
+  {
+    "login": "user10",
+    "password": "Pass1234",
+    "isValid": false,
+    "description": "Только буквы и цифры"
+  },
+  {
+    "login": "user11",
+    "password": "!@#$1234",
+    "isValid": false,
+    "description": "Нет букв"
+  },
+  {
+    "login": "user12",
+    "password": "",
+    "isValid": false,
+    "description": "Пустой пароль"
+  },
+  {
+    "login": "user13",
+    "password": "Pass 1!",
+    "isValid": false,
+    "description": "Пробел в пароле (если запрещено)"
+  }
+]

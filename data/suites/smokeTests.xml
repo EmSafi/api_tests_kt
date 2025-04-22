@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Запуск тестов по группе smoke" verbose="1">
+    <groups>
+        <run>
+            <include name="smoke"/>
+        </run>
+    </groups>
+
+    <test name="smoke тесты">
+        <classes>
+            <class name="tests.TestsAccount"/>
+        </classes>
+    </test>
+</suite>
+
