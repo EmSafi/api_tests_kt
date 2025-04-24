@@ -1,29 +1,25 @@
 package actions
 
-import io.qameta.allure.Allure
+import http.HttpClientFactory
 import io.qameta.allure.Step
+import io.restassured.response.Response
 import models.TestUser
 import org.testng.Assert
 
 class CreateUserAction(private val user: TestUser): AbstractAction() {
 
     override fun run() {
-        getUserData()
-        validateUser()
+        val response = postUserRequest(user)
+        validateResponse(response)
     }
 
-    @Step ("получение данных юзера")
-    fun getUserData() {
-        val name = user.login
-        val pass = user.password
-
-        Allure.addAttachment("имя", name)
-        Allure.addAttachment("пароль", pass)
+    @Step("Http Запрос создания юзера")
+    private fun postUserRequest(user: TestUser): Response {
+        return HttpClientFactory.createAccountClient(user).postUser()
     }
 
-    @Step ("Валидация юзера")
-    private fun validateUser(){
-        Allure.addAttachment("isValid", user.isValid.toString())
-        Assert.assertTrue(user.isValid, "юзер не прошел валидацию")
+    @Step("Проверка ответа сервера")
+    private fun validateResponse(response: Response) {
+        Assert.assertTrue(response.statusCode >= 200)
     }
 }

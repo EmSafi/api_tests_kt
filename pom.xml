@@ -17,11 +17,9 @@
         <allure.version>2.29.1</allure.version>
         <aspectj.version>1.9.21</aspectj.version>
         <io-rest-assured.version>5.5.0</io-rest-assured.version>
-        <selenide.version>7.8.1</selenide.version>
         <log4j.version>2.24.1</log4j.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
-        <io-rest-assured.version>5.4.0</io-rest-assured.version>
     </properties>
 
     <dependencyManagement>
@@ -153,6 +151,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
 

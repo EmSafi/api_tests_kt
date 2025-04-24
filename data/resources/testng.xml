@@ -3,7 +3,7 @@
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
     </listeners>
-    <test name="Allure Tests">
+    <test name="Allure tests.Tests">
         <packages>
             <package name="src.test.tests.*"/>
         </packages>

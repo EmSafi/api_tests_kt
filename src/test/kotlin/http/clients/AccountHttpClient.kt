@@ -1,15 +1,20 @@
 package http.clients
 
-import com.typesafe.config.Config
 import http.BaseHttpClient
+import io.restassured.response.Response
+import models.TestUser
 
-class AccountHttpClient(config: Config) : BaseHttpClient(config, "baseUrl") {
+class AccountHttpClient(private val user: TestUser) : BaseHttpClient("baseUrl") {
 
     /**
      * Метод создания юзера
      */
-    fun postUser() {
-        TODO()
+    fun postUser(): Response {
+        return handleResponse(
+            configureRequest()
+                .body(getUserBody(user))
+                .post("/Account/v1/User")
+        )
     }
 
     /**
@@ -38,5 +43,12 @@ class AccountHttpClient(config: Config) : BaseHttpClient(config, "baseUrl") {
      */
     fun postAuthorized() {
         TODO()
+    }
+
+    /**
+     *
+     */
+    private fun getUserBody(user: TestUser): String {
+        return "{\"userName\": \"${user.login}\", \"password\": \"${user.password}\"}"
     }
 }

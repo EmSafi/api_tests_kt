@@ -1,3 +1,5 @@
+package tests
+
 import utils.TestProperties
 import utils.JsonProcessor
 

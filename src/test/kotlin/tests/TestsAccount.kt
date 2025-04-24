@@ -1,11 +1,9 @@
 package tests
 
-import Tests
 import actions.CreateUserAction
 import dataProviders.TestsDataProvider
 import io.qameta.allure.*
 import models.TestUser
-import org.testng.annotations.DataProvider
 import org.testng.annotations.Test
 
 
