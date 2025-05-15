@@ -36,11 +36,6 @@ abstract class BaseHttpClient(
         if (!response.contentType.contains("json")) {
             throw ErrorHandler.handle(Exception(), "Non-JSON response: ${response.body.asString()}")
         }
-
-        return response.takeIf { it.statusCode in 200..299 }
-            ?: throw ErrorHandler.handle(
-                Exception(),
-                "Status: ${response.statusCode}; Response: ${response.body.asPrettyString()}"
-            )
+        return response
     }
 }

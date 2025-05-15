@@ -1,9 +1,9 @@
 package models
 
 data class TestUser (
-    val login: String,
+    var login: String,
     val password: String,
     val isValid: Boolean,
-    val role: String = "",
+    var role: String? = null,
     val description: String
 )
