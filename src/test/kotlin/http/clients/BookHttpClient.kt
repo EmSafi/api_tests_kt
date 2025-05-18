@@ -1,14 +1,11 @@
 package http.clients
 
 import com.google.gson.Gson
-import com.typesafe.config.Config
 import http.BaseHttpClient
 import io.qameta.allure.Step
-import io.restassured.mapper.ObjectMapperType
 import io.restassured.response.Response
 import models.requests.AddListsOfBooks
 import models.requests.Isbn
-import models.responses.AllBooksResponse
 import utils.Logger
 
 class BookHttpClient(baseUrlKey: String): BaseHttpClient(baseUrlKey) {

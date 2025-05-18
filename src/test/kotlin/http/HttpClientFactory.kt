@@ -1,6 +1,5 @@
 package http
 
-import com.typesafe.config.Config
 import http.clients.AccountHttpClient
 import http.clients.BookHttpClient
 import models.TestUser

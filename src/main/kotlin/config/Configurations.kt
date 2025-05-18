@@ -11,9 +11,6 @@ import java.io.File
  */
 object Configurations {
 
-    private var configName = "data/stand_configs/demoqa.conf"
-
-
     /**
      * Получение конфигов
      * @throws ConfigExceptionParse в случае если в файле ошибки
