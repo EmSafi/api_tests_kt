@@ -11,17 +11,22 @@ import java.io.File
  */
 object Configurations {
 
+    private var configName = "data/stand_configs/demoqa.conf"
+
+
     /**
      * Получение конфигов
      * @throws ConfigExceptionParse в случае если в файле ошибки
      * @throws ConfigExceptionMissing в случае отсутствия файла в системе
      */
-    private val config =
-        try {
-            ConfigFactory.parseFile(File(System.getProperty("config_name")))
-        } catch (e: Exception) {
-            throw ErrorHandler.handle(e, "")
-        }
+    private val config = try {
+        val configPath = System.getProperty("config_name")
+            ?: "data/stand_configs/demoqa.conf" // Путь по умолчанию для IDE
+
+        ConfigFactory.parseFile(File(configPath))
+    } catch (e: Exception) {
+        throw ErrorHandler.handle(e, "Failed to load config from: ${System.getProperty("config_name") ?: "default path"}")
+    }
 
 
     /**
