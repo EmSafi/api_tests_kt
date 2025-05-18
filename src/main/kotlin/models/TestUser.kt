@@ -5,5 +5,6 @@ data class TestUser (
     val password: String,
     val isValid: Boolean,
     var role: String? = null,
-    val description: String
+    val description: String,
+    val userID: String? = null
 )

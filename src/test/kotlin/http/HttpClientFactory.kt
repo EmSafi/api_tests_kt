@@ -6,6 +6,6 @@ import http.clients.BookHttpClient
 import models.TestUser
 
 object HttpClientFactory {
-    fun createAccountClient(user: TestUser) = AccountHttpClient(user)
-    fun createBookClient(config: Config) = BookHttpClient(config)
+    fun createAccountClient(user: TestUser, baseUrlKey: String) = AccountHttpClient(user, baseUrlKey)
+    fun createBookClient(baseUrlKey: String) = BookHttpClient(baseUrlKey)
 }

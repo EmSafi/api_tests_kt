@@ -3,7 +3,6 @@ package dataProviders
 import com.google.gson.Gson
 import models.Book
 import models.TestUser
-import org.apache.commons.lang3.concurrent.ConcurrentUtils
 import org.testng.annotations.DataProvider
 import java.io.File
 
@@ -36,5 +35,6 @@ class TestsDataProvider {
             val users = Gson().fromJson(json, Array<Book>::class.java)
             return users.map { arrayOf(it) }.toTypedArray()
         }
+
     }
 }

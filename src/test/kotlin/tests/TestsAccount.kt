@@ -8,7 +8,7 @@ import dataProviders.TestsDataProvider
 import io.qameta.allure.*
 import models.TestUser
 import org.testng.annotations.Test
-import scenario.TestScenario
+import utils.EntityUtils
 
 
 open class TestsAccount: Tests() {
@@ -32,10 +32,10 @@ open class TestsAccount: Tests() {
     @Epic("Проверка цепочки действий")
     fun testAccount_auth_and_delete() {
         val basicUser = Configurations.getUserByRole("basic")
-        TestScenario()
-            .addAction(AuthAction(basicUser))
-            .addAction(CreateUserAction(basicUser))
-            .addAction(DeleteUserAction(basicUser))
-            .execute()
+        val userForTest = EntityUtils().getFirstValidUser()
+
+        AuthAction(basicUser).run()
+        CreateUserAction(userForTest).run()
+        DeleteUserAction(userForTest).run()
     }
 }

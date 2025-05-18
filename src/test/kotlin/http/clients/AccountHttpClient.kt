@@ -4,15 +4,16 @@ import http.BaseHttpClient
 import io.qameta.allure.Step
 import io.restassured.response.Response
 import models.TestUser
-import utils.TestProperties
+import utils.Logger
 
-class AccountHttpClient(private val user: TestUser) : BaseHttpClient("baseUrl") {
+class AccountHttpClient(private val user: TestUser, baseUrlKey: String) : BaseHttpClient(baseUrlKey) {
 
     /**
      * Метод создания юзера
      */
     @Step("Запрос создания юзера: POST /Account/v1/User")
     fun postUser(): Response {
+        Logger.info("Запрос POST /User для юзера: ${user.login}")
         return handleResponse(
             configureRequest()
                 .body(getUserBody(user))
@@ -32,9 +33,10 @@ class AccountHttpClient(private val user: TestUser) : BaseHttpClient("baseUrl") 
      */
     @Step("Запрос удаления юзера: DELETE /Account/v1/User/{userID}")
     fun deleteUser(userID: String, bearerToken: String, basicToken: String): Response {
+        Logger.info("Запрос DELETE /User для юзера c id = $userID")
         return handleResponse(
             configureRequest()
-                .header("authorization", basicToken)
+                .header("authorization", "Basic $basicToken")
                 .header("Authorization", bearerToken)
                 .delete("/Account/v1/User/$userID")
         )
@@ -45,6 +47,7 @@ class AccountHttpClient(private val user: TestUser) : BaseHttpClient("baseUrl") 
      */
     @Step("Запрос получения токена: POST /Account/v1/GenerateToken")
     fun postGenerateToken(): Response {
+        Logger.info("Запрос /GenerateToken для юзера: ${user.login}")
         return handleResponse(
             configureRequest()
                 .body(getUserBody(user))

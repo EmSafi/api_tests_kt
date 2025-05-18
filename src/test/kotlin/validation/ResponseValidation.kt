@@ -7,13 +7,13 @@ class ResponseValidation {
 
     @Step ("Проверка статуса респонса: ожидаемый {expected}, фактический {actual}")
     fun checkStatusCode (actual: Int, expected: Int): ResponseValidation {
-        Assert.assertEquals(expected, actual)
+        Assert.assertEquals(actual, expected)
         return this
     }
 
     @Step ("Проверка совпадения значения полей: Ожидалось {expected}, получено {actual}")
     fun checkFieldEquality(actual: String, expected: String): ResponseValidation {
-        Assert.assertEquals(expected, actual)
+        Assert.assertEquals(actual, expected)
         return this
     }
 

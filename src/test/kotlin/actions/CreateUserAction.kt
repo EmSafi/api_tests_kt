@@ -14,7 +14,7 @@ import validation.ResponseValidation
 
 class CreateUserAction(private val user: TestUser) : Action {
 
-    private val userHttpClient = HttpClientFactory.createAccountClient(user)
+    private val userHttpClient = HttpClientFactory.createAccountClient(user, "baseUrl")
 
     override fun run() {
 
@@ -45,6 +45,7 @@ class CreateUserAction(private val user: TestUser) : Action {
             .checkFieldEquality(user.login, userResponse.username)
 
         //Сохраняем контекст для последующих шагов
+        Logger.info("Сохраняем userID = ${userResponse.userID}")
         TestProperties.setProperty("userID", userResponse.userID)
     }
 

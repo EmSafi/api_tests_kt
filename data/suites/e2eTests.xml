@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Запуск тестов по группе e2e" verbose="1">
+    <groups>
+        <run>
+            <include name="e2e"/>
+        </run>
+    </groups>
+
+    <test name="e2e тесты">
+        <classes>
+            <class name="tests.TestsE2e"/>
+        </classes>
+    </test>
+</suite>
+

@@ -1,8 +1,8 @@
 package tests
 
-import scenario.TestScenario
+import org.testng.annotations.AfterTest
+import org.testng.annotations.BeforeGroups
 
 abstract class Tests {
 
-    protected lateinit var currentScenario: TestScenario
 }

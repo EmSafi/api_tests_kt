@@ -1,11 +1,12 @@
 package actions
 
 import com.google.gson.Gson
-import config.Configurations
 import http.HttpClientFactory
+import io.qameta.allure.Step
 import io.restassured.response.Response
 import models.TestUser
 import models.responses.TokenViewResponse
+import utils.Logger
 import utils.TestProperties
 import validation.ResponseValidation
 import java.util.Base64
@@ -13,17 +14,19 @@ import java.util.Base64
 class AuthAction(private val basicUser: TestUser): Action {
 
     //http клиент
-    private val httpClient = HttpClientFactory.createAccountClient(basicUser)
+    private val httpClient = HttpClientFactory.createAccountClient(basicUser, "baseUrl")
 
     override fun run() {
+        Logger.info("Начинаем аутентификацию")
         val tokenResponse = getToken()
         validatePositiveResponse(tokenResponse)
 
+        //Сохраним контекст для последующих экшенов
         TestProperties.setProperty("bearerToken", tokenResponse.body.jsonPath().getString("token"))
-        TestProperties.setProperty("basicToken", getBearerToken())
+        TestProperties.setProperty("basicToken", getBasicToken())
     }
 
-
+    @Step("Валидация ответа сервера после запроса аутентификации")
     private fun validatePositiveResponse (response: Response) {
         val responseModel = parseResponse(response)
 
@@ -49,9 +52,9 @@ class AuthAction(private val basicUser: TestUser): Action {
     }
 
     /**
-     *
+     * Метод, генерирующий basic token для авторизации
      */
-    private fun getBearerToken(): String {
+    private fun getBasicToken(): String {
         val tokenString = "${basicUser.login}:${basicUser.password}"
         return Base64.getEncoder().encodeToString(tokenString.toByteArray())
     }
