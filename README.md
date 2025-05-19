@@ -17,8 +17,11 @@ clean test -Dsurefire.suiteXmlFiles=data/suites/e2eTests.xml -Dconfig_name=data/
 Архитектура реализована в следующем виде: 
 
 data/
+
 | -- resources -> общие для проекта настройки: логгер, testNG и пр. 
+
 | -- stand_configs -> место хранения конфигураций стендов 
+
 | -- suites -> место хранения сьютов testNG 
 main/ 
 | -- config -> классы реализующие работу с конфигурациями стендов 
