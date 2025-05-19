@@ -17,12 +17,12 @@ clean test -Dsurefire.suiteXmlFiles=data/suites/e2eTests.xml -Dconfig_name=data/
 Архитектура реализована в следующем виде: 
 
 ### Каталог 'data/'
-📁 data/
-├── 📂 resources
+📁 **data/**
+├── 📂 **resources**
 │ └── Общие настройки проекта: конфигурация логгера, настройки TestNG и т.д.
-├── 📂 stand_configs
+├── 📂 **stand_configs**
 │ └── Конфигурационные файлы для разных тестовых стендов (DEV, QA, PROD)
-└── 📂 suites
+└── 📂 **suites**
 └── XML-сборки TestNG для группировки тестовых сценариев
 
 ### Каталог 'main/'
@@ -39,18 +39,18 @@ clean test -Dsurefire.suiteXmlFiles=data/suites/e2eTests.xml -Dconfig_name=data/
     └── *Вспомогательные утилиты: хелперы, кастомные исключения, утилитарные методы*
 
 ### Каталог `test/`
-📁 test/
-├── 📂 actions
+📁 **test/**
+├── 📂 **actions**
 │ └── Паттерн Page Object / Action: инкапсуляция бизнес-действий с валидацией
-├── 📂 dataProviders
+├── 📂 **dataProviders**
 │ └── Источники данных для параметризованных тестов (CSV, Excel, JSON)
-├── 📂 http
+├── 📂 **http**
 │ └── Клиенты для работы с HTTP (REST/SOAP, обработка запросов/ответов)
-├── 📂 tests
+├── 📂 **tests**
 │ └── Тестовые классы с @Test методами
-├── 📂 validation
+├── 📂 **validation**
 │ └── Кастомные валидаторы и Assertion-утилиты
-└── 📂 utils
+└── 📂 **utils**
 └── Специфичные для тестов утилиты: генераторы данных, тестовые хуки
 ---
 
