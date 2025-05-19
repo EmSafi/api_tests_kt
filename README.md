@@ -12,7 +12,6 @@ clean test -Dsurefire.suiteXmlFiles=data/suites/e2eTests.xml -Dconfig_name=data/
 Где 
   - surefire.suiteXmlFiles = путь до xml файла testNG
   - config_name = путь до файла конфигураций
-  - 
 ---
 
 ```bash
