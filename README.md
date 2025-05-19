@@ -54,12 +54,13 @@ clean test -Dsurefire.suiteXmlFiles=data/suites/e2eTests.xml -Dconfig_name=data/
 └── Специфичные для тестов утилиты: генераторы данных, тестовые хуки
 ---
 
-'''
+```mermaid
 graph TD
+    graph TD
     A[Test Suite] --> B[Test Class]
     B --> C[Action Class]
     C --> D[HTTP Client]
     C --> E[Models]
     C --> F[Validation]
     C --> G[Test Report]
-'''
+```
