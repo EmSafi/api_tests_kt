@@ -56,7 +56,6 @@ clean test -Dsurefire.suiteXmlFiles=data/suites/e2eTests.xml -Dconfig_name=data/
 
 ```mermaid
 graph TD
-    graph TD
     A[Test Suite] --> B[Test Class]
     B --> C[Action Class]
     C --> D[HTTP Client]
